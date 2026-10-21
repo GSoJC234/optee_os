@@ -665,6 +665,10 @@ CFG_CORE_NEX_HEAP_SIZE ?= 16384
 # the TA is linked statically.
 CFG_TA_GPROF_SUPPORT ?= n
 
+# Enable basic-block PC instrumentation for the core fuzz TA on test builds only.
+# This exposes execution paths to the dedicated fuzz coverage PTA.
+CFG_CORE_FUZZ_COVERAGE ?= n
+
 # TA function tracing.
 # When this option is enabled, OP-TEE can execute Trusted Applications
 # instrumented with GCC's -pg flag and will output function tracing
