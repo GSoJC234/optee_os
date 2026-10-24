@@ -669,6 +669,15 @@ CFG_TA_GPROF_SUPPORT ?= n
 # This exposes execution paths to the dedicated fuzz coverage PTA.
 CFG_CORE_FUZZ_COVERAGE ?= n
 
+# Include the selected core crypto implementation files in the fuzz build.
+CFG_CORE_FUZZ_COVERAGE_CRYPTO_IMPL ?= $(CFG_CORE_FUZZ_COVERAGE)
+
+# Include the selected TomCrypt source files in the fuzz build.
+CFG_CORE_FUZZ_COVERAGE_TOMCRYPT ?= $(CFG_CORE_FUZZ_COVERAGE)
+
+# Include core MbedTLS MPI used by the crypto provider.
+CFG_CORE_FUZZ_COVERAGE_MPI ?= $(CFG_CORE_FUZZ_COVERAGE)
+
 # TA function tracing.
 # When this option is enabled, OP-TEE can execute Trusted Applications
 # instrumented with GCC's -pg flag and will output function tracing

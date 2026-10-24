@@ -1,3 +1,11 @@
+# Cover selected core MbedTLS MPI sources used by asymmetric crypto.
+ifeq ($(sm)-$(CFG_CORE_FUZZ_COVERAGE)-$(CFG_CORE_FUZZ_COVERAGE_MPI),core-y-y)
+cflags-mbedtls/library/bignum.c-y += -fsanitize-coverage=trace-pc
+cflags-mbedtls/library/bignum_core.c-y += -fsanitize-coverage=trace-pc
+cflags-mbedtls/library/constant_time.c-y += -fsanitize-coverage=trace-pc
+cflags-mbedtls/library/platform_util.c-y += -fsanitize-coverage=trace-pc
+endif
+
 global-incdirs-y += include
 global-incdirs-y += mbedtls/include
 

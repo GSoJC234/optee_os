@@ -30,8 +30,11 @@ srcs-y += tee_obj.c
 srcs-y += tee_svc.c
 srcs-y += tee_svc_cryp.c
 ifeq ($(CFG_CORE_FUZZ_COVERAGE),y)
-# Keep the callback/PTA uninstrumented; start with the SHA syscall entry path.
+# Cover crypto syscall handling and the helpers used by the fuzz TA.
 cflags-tee_svc_cryp.c-y += -fsanitize-coverage=trace-pc
+cflags-tee_obj.c-y += -fsanitize-coverage=trace-pc
+cflags-tee_cryp_utl.c-y += -fsanitize-coverage=trace-pc
+cflags-tee_cryp_hkdf.c-y += -fsanitize-coverage=trace-pc
 endif
 srcs-y += tee_svc_storage.c
 cppflags-tee_svc.c-y += -DTEE_IMPL_VERSION=$(TEE_IMPL_VERSION)

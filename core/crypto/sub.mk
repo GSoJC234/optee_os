@@ -1,3 +1,14 @@
+# Cover only crypto dispatch and implementations selected for the fuzz TA.
+ifeq ($(CFG_CORE_FUZZ_COVERAGE),y)
+cflags-crypto.c-y += -fsanitize-coverage=trace-pc
+ifeq ($(CFG_CORE_FUZZ_COVERAGE_CRYPTO_IMPL),y)
+cflags-rng_fortuna.c-y += -fsanitize-coverage=trace-pc
+cflags-aes-gcm.c-y += -fsanitize-coverage=trace-pc
+cflags-aes-gcm-sw.c-y += -fsanitize-coverage=trace-pc
+cflags-aes-gcm-ghash-tbl.c-y += -fsanitize-coverage=trace-pc
+endif
+endif
+
 srcs-y += crypto.c
 
 ifeq (y-y,$(CFG_CRYPTO_AES)-$(CFG_CRYPTO_GCM))

@@ -15,7 +15,7 @@ static void *owner_token;
 static uint32_t previous_site;
 static uint8_t edge_map[PTA_CORE_FUZZ_COV_MAP_SIZE];
 
-/* Called by GCC from tee_svc_cryp.c; keep this unit uninstrumented. */
+/* Called from instrumented crypto code; keep this unit uninstrumented. */
 void __sanitizer_cov_trace_pc(void)
 {
 	uintptr_t pc = (uintptr_t)__builtin_return_address(0);
